@@ -1,0 +1,18 @@
+First, start with Overlay mode with no direct link
+
+Device are a random Poisson Point Process
+
+Pr_e of relay being in shadow region, to be computed via simulation
+
+SNR_D2RN,ov1 & SNR_RN2D,ov1 to be calculated during simulation
+
+C_relay,ov1 - transmission capacity to be calculated, and optimized
+
+C_relay,ov1 depends on:
+lambda1 - D2D user density
+Pr_e - pr of relay in a shadow region
+Pr(SIR_D2RN,ov1 >= T2)
+Pr(SIR_RN2D,ov1 >= T2)
+
+
+Make use of NN??
