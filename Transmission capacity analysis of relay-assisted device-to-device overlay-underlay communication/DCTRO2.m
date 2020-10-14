@@ -1,0 +1,44 @@
+Tx1m = 15;
+Tx2m = 15;
+Tx3m = 3*10^(-4);
+Tx4m = 2;
+Tx5m = 0;
+Tx6m = 4;
+Tx7m = [35 50];
+Tx8m = size(Tx7m,2);
+A = (4*pi-36*sqrt(3)+64)/(12*pi-9*sqrt(3));
+Tx9m = pi*gamma(1+2/Tx6m)*gamma(1-2/Tx6m);
+Tx10m = zeros(1,6);
+Tx11m = 10^(Tx1m/10);
+Tx12m = 10^(Tx2m/10);
+Tx13m = 10^(Tx4m/10);
+Tx14m = 10^(Tx5m/10);
+Tx15m = 1*10^(-5);
+Tx16m = 2*10^(-3);
+Tx17m = 40;
+Tx18m = (Tx16m-Tx15m)/Tx17m;
+Tx20m = Tx15m:Tx18m:Tx16m;
+Tx19m = size(Tx20m,2);
+
+for Tx21m = 1:Tx8m;
+Tx22m = Tx7m(1,Tx21m);Tx23m = ((2*pi/3)-sqrt(3)/2)*(Tx22m^2);Tx24m = 1-exp(-Tx20m*Tx23m); 
+    Tx25m = exp(-Tx3m*Tx9m*((Tx13m)^(2/Tx6m))*(Tx22m^2));
+    Tx26m = Tx3m.*Tx25m*ones(1,Tx19m);
+    Tx27m = exp(-1/2*Tx3m.*Tx24m*Tx9m*(Tx14m^(2/Tx6m))*(A^2)*(Tx22m^2)*(((Tx12m/Tx11m)^(2/Tx6m))+1));
+    Tx28m = exp(-1/2*Tx3m.*Tx24m*Tx9m*(Tx14m^(2/Tx6m))*(A^2)*(Tx22m^2)*(((Tx11m/Tx12m)^(2/Tx6m))+1));
+    Tx29m = 1/2*Tx3m*Tx24m.*Tx27m.*Tx28m;
+    Tx30m = exp(-Tx3m*Tx9m*(Tx13m^(2/Tx6m))*(Tx22m^2)*(1-(1/2)*Tx24m+1/2*Tx24m*((Tx12m/Tx11m)^(2/Tx6m))));
+    Tx31m = exp(-Tx3m*Tx9m*(Tx14m^(2/Tx6m))*(A^2)*(Tx22m^2)*(1-(1/2)*Tx24m+1/2*Tx24m*((Tx12m/Tx11m)^(2/Tx6m))));
+    Tx32m = exp(-Tx3m*Tx9m*(Tx14m^(2/Tx6m))*(A^2)*(Tx22m^2)*((1-1/2*Tx24m)*((Tx11m/Tx12m)^(2/Tx6m))+1/2*Tx24m));
+    Tx33m = Tx3m*(1-Tx24m).*Tx30m+1/2*Tx3m*Tx24m.*Tx31m.*Tx32m;
+    Tx10m(1,((Tx21m-1)*3+1)) = plot(Tx20m(1,:),Tx26m(1,:));
+    hold on;
+    Tx10m(1,((Tx21m-1)*3+2)) = plot(Tx20m(1,:),Tx29m(1,:),'-*');
+    hold on;
+    Tx10m(1,(Tx21m*3)) = plot(Tx20m(1,:),Tx33m(1,:),'-o');
+    hold on;
+end
+
+xlabel('Potential RN density \lambda_2 (m^{-2})');
+ylabel('D2D transmission capacity (bit/s/Hz)');
+grid on;

@@ -23,7 +23,7 @@ T_2 = 1.25893; % 2 db, RN SIR threshold
 
 
 alpha = 4; % Path loss exponent
-R = 50; % D2D link distance
+R = 35; % D2D link distance
 
 
 % Values defined in the paper
