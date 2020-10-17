@@ -1,16 +1,5 @@
-%% Program Initialization
-clear;
-close all;
-clc;
-format long g;
-
-
-%% Testing, feel free to play around with values
-% Current values taken as per the table in the paper
-t = tc(0.0001, 0.0003,0.0004,24, 15, 15, 0,2,2, 4, 35) % Output tc for a given lambda, verified with original
-
-
 function [t] = tc(l0, l1, l2 ,p0, p1, p2, t0,t1,t2, a, r)
+format long g;
 %
 %   Modified by:
 %               Atman Kar
@@ -70,17 +59,3 @@ end
 t = Tx36m;
 
 end
-
-%% What to optimise?
-% Important variables for Tx Capacity (Target):
-%     1. lamda1 & lamda0 - given to us
-%     2. lambda2 - we should change, optimally
-%     3. P2 - we should change, optimally
-%     4. lamda2*P2 - Relay power Tx/unit area (m^2) -> minimized l2 = no.
-%     of RN/ m2, P2 = power (W)/ relay node, l2*p2 -> power (W) of Tx of RN / m2 
-%     5. R -> Given to us (say)
-
-% As the problem is non-linear, let us try to optimize for lambda2*P2,
-% given other constraints. Can we minimize lambda1*P1 as well? i.e. Power
-% of Device Tx/unit area ? Reducing power requirements can help with
-% optimal antenna design for Tx and Rx according to our model?  
